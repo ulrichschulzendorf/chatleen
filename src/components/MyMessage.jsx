@@ -1,8 +1,8 @@
 const MyMessage = ({ message }) => {
-  if (message?.attachements?.lenght > 0) {
+  if (message?.attachments?.length > 0) {
     return (
       <img
-        src={message.attachements[0].file}
+        src={message.attachments[0].file}
         alt="message-attachment"
         className="message-image"
         style={{ float: "right" }}
