@@ -6,35 +6,33 @@ const TheirMessage = ({ lastMessage, message }) => {
     <div className="message-row">
       {isFirstMessageByUser && (
         <div
-          className="message-avatar "
-          style={{ backgroundImage: `url(${message?.sender?.avatar})` }}
+          className="message-avatar"
+          style={{
+            backgroundImage: message.sender && `url(${message.sender.avatar})`,
+          }}
         />
-      )   }
-          { message?.attachments?.length > 0
-    ? (
-          <img
-            src={message.attachments[0].file}
-            alt="message-attachment"
-            className="message-image"
-            style={{ float: "right" }}
-          />
-    ): (
-       <div
-    className="message"
-    style={{
-      float: "right",
-      marginRight: "18px",
-      color: "white",
-      backgroundColor: "#336699",
-    }}
-  >
-    {message.text}
-  </div>
-    )     
-      
+      )}
+      {message.attachments && message.attachments.length > 0 ? (
+        <img
+          src={message.attachments[0].file}
+          alt="message-attachment"
+          className="message-image"
+          style={{ marginLeft: isFirstMessageByUser ? "4px" : "48px" }}
+        />
+      ) : (
+        <div
+          className="message"
+          style={{
+            float: "left",
+            backgroundColor: "#CABCDC",
+            marginLeft: isFirstMessageByUser ? "4px" : "48px",
+          }}
+        >
+          {message.text}
+        </div>
+      )}
     </div>
-          };
-          
-);
+  );
+};
 
 export default TheirMessage;
